@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Juego Ambiental Kids</title>
+    <meta charset="UTF-8">
+    <title>Ambiental Kids</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
 
-<style>
-    body {
-        font-family: Arial;
-        text-align: center;
-        background: #e0f7fa;
-    }
+        header {
+            background: linear-gradient(90deg, #4caf50, #00bcd4);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-    h1 {
-        color: #2e7d32;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 40px;
+        }
 
-    .contenedores {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px;
-    }
+        nav {
+            background: #2e7d32;
+            padding: 10px;
+            text-align: center;
+        }
 
-    .contenedor {
-        width: 120px;
-        height: 120px;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        line-height: 120px;
-    }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .plastico { background: #2196f3; }
-    .papel { background: #ff9800; }
-    .organico { background: #4caf50; }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
 
-    .objeto {
-        margin: 20px;
-        font-size: 20px;
-        cursor: pointer;
-        background: white;
-        display: inline-block;
-        padding: 10px;
-        border-radius: 10px;
-    }
+        .card {
+            background: white;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
-    #resultado {
-        font-size: 20px;
-        margin-top: 20px;
-    }
-</style>
+        footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>♻️ Clasifica el reciclaje</h1>
-<p>Haz clic en el contenedor correcto</p>
+<header>
+    <h1>🌍 Ambiental Kids</h1>
+    <p>Aprende • Explora • Actúa</p>
+</header>
 
-<div id="objeto" class="objeto"></div>
+<nav>
+    <a href="#">Inicio</a>
+    <a href="#">Juegos</a>
+    <a href="#">Experimentos</a>
+    <a href="#">Consejos</a>
+</nav>
 
-<div class="contenedores">
-    <div class="contenedor plastico" onclick="verificar('plastico')">Plástico</div>
-    <div class="contenedor papel" onclick="verificar('papel')">Papel</div>
-    <div class="contenedor organico" onclick="verificar('organico')">Orgánico</div>
-</div>
+<section>
+    <h2>Bienvenidos</h2>
+    <p>En Ambiental Kids aprenderás a cuidar el planeta de forma divertida.</p>
 
-<p id="resultado"></p>
+    <div class="card">
+        <h3>♻️ Reciclaje</h3>
+        <p>Aprende a separar la basura correctamente.</p>
+    </div>
 
-<script>
-const objetos = [
-    { nombre: "Botella", tipo: "plastico" },
-    { nombre: "Periódico", tipo: "papel" },
-    { nombre: "Cáscara de plátano", tipo: "organico" },
-    { nombre: "Bolsa", tipo: "plastico" },
-    { nombre: "Caja de cartón", tipo: "papel" }
-];
+    <div class="card">
+        <h3>💧 Ahorra agua</h3>
+        <p>Descubre cómo cuidar este recurso vital.</p>
+    </div>
 
-let actual;
+    <div class="card">
+        <h3>🌳 Naturaleza</h3>
+        <p>Conoce más sobre plantas y animales.</p>
+    </div>
+</section>
 
-function nuevoObjeto() {
-    actual = objetos[Math.floor(Math.random() * objetos.length)];
-    document.getElementById("objeto").innerText = actual.nombre;
-}
+<footer>
+    <p>© 2026 Ambiental Kids - Pequeñas acciones, grandes cambios</p>
+</footer>
 
-function verificar(tipo) {
-    if (tipo === actual.tipo) {
-        document.getElementById("resultado").innerText = "✅ ¡Correcto!";
-    } else {
-        document.getElementById("resultado").innerText = "❌ Intenta otra vez";
-    }
-    setTimeout(nuevoObjeto, 1000);
-}
-
-nuevoObjeto();
-</script>
+<a href="juego.html">🎮 Jugar ahora</a>
 
 </body>
-</html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
