@@ -1,141 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ambiental Kids</title>
+<meta charset="UTF-8">
+<title>Juego Ambiental Kids</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #e8f5e9;
-    color: #2e7d32;
-}
+    body {
+        font-family: Arial;
+        text-align: center;
+        background: #e0f7fa;
+    }
 
-header {
-    background: #2e7d32;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+    h1 {
+        color: #2e7d32;
+    }
 
-nav {
-    background: #1b5e20;
-    padding: 10px;
-    text-align: center;
-}
+    .contenedores {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+    }
 
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
+    .contenedor {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        line-height: 120px;
+    }
 
-section {
-    text-align: center;
-    padding: 20px;
-}
+    .plastico { background: #2196f3; }
+    .papel { background: #ff9800; }
+    .organico { background: #4caf50; }
 
-.card {
-    background: white;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    .objeto {
+        margin: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        background: white;
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-.boton-juego {
-    display: inline-block;
-    background: #4CAF50;
-    color: white;
-    padding: 15px 25px;
-    margin-top: 20px;
-    font-size: 20px;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.boton-juego:hover {
-    background: #1b5e20;
-    transform: scale(1.1);
-}
-
-footer {
-    background: #1b5e20;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
+    #resultado {
+        font-size: 20px;
+        margin-top: 20px;
+    }
 </style>
 </head>
+
 <body>
 
-<header>
-    <h1>🌍 Ambiental Kids</h1>
-    <p>Aprende • Explora • Actúa</p>
-</header>
-nav {
-    background: #2e7d32;
-    padding: 10px;
-    text-align: center;
+<h1>♻️ Clasifica el reciclaje</h1>
+<p>Haz clic en el contenedor correcto</p>
+
+<div id="objeto" class="objeto"></div>
+
+<div class="contenedores">
+    <div class="contenedor plastico" onclick="verificar('plastico')">Plástico</div>
+    <div class="contenedor papel" onclick="verificar('papel')">Papel</div>
+    <div class="contenedor organico" onclick="verificar('organico')">Orgánico</div>
+</div>
+
+<p id="resultado"></p>
+
+<script>
+const objetos = [
+    { nombre: "Botella", tipo: "plastico" },
+    { nombre: "Periódico", tipo: "papel" },
+    { nombre: "Cáscara de plátano", tipo: "organico" },
+    { nombre: "Bolsa", tipo: "plastico" },
+    { nombre: "Caja de cartón", tipo: "papel" }
+];
+
+let actual;
+
+function nuevoObjeto() {
+    actual = objetos[Math.floor(Math.random() * objetos.length)];
+    document.getElementById("objeto").innerText = actual.nombre;
 }
-nav {
-    background: #2e7d32;
-    padding: 10px;
-    text-align: center;
+
+function verificar(tipo) {
+    if (tipo === actual.tipo) {
+        document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+    } else {
+        document.getElementById("resultado").innerText = "❌ Intenta otra vez";
+    }
+    setTimeout(nuevoObjeto, 1000);
 }
 
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-    .card {
-    background: white;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-}
-<nav>
-    <a href="#">Inicio</a>
-    <a href="#">Juegos</a>
-    <a href="#">Experimentos</a>
-    <a href="#">Consejos</a>
-</nav>
-
-<section>
-    <h2>Bienvenidos</h2>
-    <p>En Ambiental Kids aprenderás a cuidar el planeta de forma divertida.</p>
-<a href="juego.html" class="boton-juego">🎮 Jugar ahora</a>
-    <div class="card">
-        <h3>♻️ Reciclaje</h3>
-        <p>Aprende a separar la basura correctamente.</p>
-    </div>
-
-    <div class="card">
-        <h3>💧 Ahorra agua</h3>
-        <p>Descubre cómo cuidar este recurso vital.</p>
-    </div>
-
-    <div class="card">
-        <h3>🌳 Naturaleza</h3>
-        <p>Conoce más sobre plantas y animales.</p>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 Ambiental Kids - Pequeñas acciones, grandes cambios</p>
-</footer>
-
-<a href="juego.html">🎮 Jugar ahora</a>
+nuevoObjeto();
+</script>
 
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+</html>
