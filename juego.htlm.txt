@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego Ambiental Kids</title>
+
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        background: #e0f7fa;
+    }
+
+    h1 {
+        color: #2e7d32;
+    }
+
+    .contenedores {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .contenedor {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        line-height: 120px;
+    }
+
+    .plastico { background: #2196f3; }
+    .papel { background: #ff9800; }
+    .organico { background: #4caf50; }
+
+    .objeto {
+        margin: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        background: white;
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    #resultado {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>♻️ Clasifica el reciclaje</h1>
+<p>Haz clic en el contenedor correcto</p>
+
+<div id="objeto" class="objeto"></div>
+
+<div class="contenedores">
+    <div class="contenedor plastico" onclick="verificar('plastico')">Plástico</div>
+    <div class="contenedor papel" onclick="verificar('papel')">Papel</div>
+    <div class="contenedor organico" onclick="verificar('organico')">Orgánico</div>
+</div>
+
+<p id="resultado"></p>
+
+<script>
+const objetos = [
+    { nombre: "Botella", tipo: "plastico" },
+    { nombre: "Periódico", tipo: "papel" },
+    { nombre: "Cáscara de plátano", tipo: "organico" },
+    { nombre: "Bolsa", tipo: "plastico" },
+    { nombre: "Caja de cartón", tipo: "papel" }
+];
+
+let actual;
+
+function nuevoObjeto() {
+    actual = objetos[Math.floor(Math.random() * objetos.length)];
+    document.getElementById("objeto").innerText = actual.nombre;
+}
+
+function verificar(tipo) {
+    if (tipo === actual.tipo) {
+        document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+    } else {
+        document.getElementById("resultado").innerText = "❌ Intenta otra vez";
+    }
+    setTimeout(nuevoObjeto, 1000);
+}
+
+nuevoObjeto();
+</script>
+
+</body>
+</html>

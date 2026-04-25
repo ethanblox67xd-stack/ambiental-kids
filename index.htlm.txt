@@ -97,5 +97,7 @@
     <p>© 2026 Ambiental Kids - Pequeñas acciones, grandes cambios</p>
 </footer>
 
+<a href="juego.html">🎮 Jugar ahora</a>
+
 </body>
 </html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
