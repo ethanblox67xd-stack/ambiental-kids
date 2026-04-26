@@ -58,6 +58,26 @@
             text-align: center;
             padding: 10px;
         }
+    .contenedor-boton {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton-juego {
+    display: inline-block;
+    background: linear-gradient(90deg, #4CAF50, #00bcd4);
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.boton-juego:hover {
+    transform: scale(1.1);
+    background: linear-gradient(90deg, #2e7d32, #0097a7);
+}
     </style>
 </head>
 <body>
@@ -77,7 +97,9 @@
 <section>
     <h2>Bienvenidos</h2>
     <p>En Ambiental Kids aprenderás a cuidar el planeta de forma divertida.</p>
-<a href="juego.html">Jugar</a>
+<div class="contenedor-boton">
+    <a href="juego.html" class="boton-juego">🎮 Jugar ahora</a>
+</div>
     <div class="card">
         <h3>♻️ Reciclaje</h3>
         <p>Aprende a separar la basura correctamente.</p>
