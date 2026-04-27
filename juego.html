@@ -34,7 +34,9 @@
     .plastico { background: #2196f3; }
     .papel { background: #ff9800; }
     .organico { background: #4caf50; }
-
+    .metal { background: #858485; }
+    .vidrio { background: #ff3A3A; }
+    
     .objeto {
         margin: 20px;
         font-size: 20px;
@@ -63,6 +65,8 @@
     <div class="contenedor plastico" onclick="verificar('plastico')">Plástico</div>
     <div class="contenedor papel" onclick="verificar('papel')">Papel</div>
     <div class="contenedor organico" onclick="verificar('organico')">Orgánico</div>
+    <div class="contenedor vidrio" onclick="verificar('vidrio')">Vidrio</div>
+    <div class="contenedor metal" onclick="verificar('metal')">Metal</div>
 </div>
 
 <p id="resultado"></p>
@@ -73,6 +77,13 @@ const objetos = [
     { nombre: "Periódico", tipo: "papel" },
     { nombre: "Cáscara de plátano", tipo: "organico" },
     { nombre: "Bolsa", tipo: "plastico" },
+    { nombre: "Botella de vino", tipo: "vidrio" },
+    { nombre: "Cubeta de huevos", tipo: "papel" },
+    { nombre: "Cáscara de papa", tipo: "organico" },
+    { nombre: "Vaso de vidrio", tipo: "vidrio" },
+    { nombre: "Llaves", tipo: "metal" },
+    { nombre: "Clavos", tipo: "metal" },
+    { nombre: "Tarros de leche", tipo: "metal" },
     { nombre: "Caja de cartón", tipo: "papel" }
 ];
 
