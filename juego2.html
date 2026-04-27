@@ -51,7 +51,7 @@ h1 {
 
 <script>
 let puntos = 0;
-l1e1t tiempo = 30;       
+let tiempo = 30;
 let juegoActivo = true;
 
 const objetos = [
@@ -61,51 +61,56 @@ const objetos = [
     { emoji: "🍎", tipo: "basura" }
 ];
 
-function crearObjeto() {
+const area = document.getElementById("area");
+
+// 🎮 Crear objetos constantemente
+const generador = setInterval(() => {
     if (!juegoActivo) return;
 
-function crearObjeto() {
-    const area = document.getElementById("area");
     const obj = objetos[Math.floor(Math.random() * objetos.length)];
 
     const div = document.createElement("div");
     div.className = "objeto";
     div.innerText = obj.emoji;
 
-    div.style.left = Math.random() * 250 + "px";
-    div.style.top = Math.random() * 250 + "px";
+    div.style.left = Math.random() * 260 + "px";
+    div.style.top = Math.random() * 260 + "px";
 
     div.onclick = function() {
         if (!juegoActivo) return;
-        
+
         if (obj.tipo === "reciclable") {
             puntos++;
         } else {
             puntos--;
         }
+
         document.getElementById("puntos").innerText = "Puntos: " + puntos;
         div.remove();
     };
 
     area.appendChild(div);
 
+    // desaparece solo
     setTimeout(() => {
         if (area.contains(div)) div.remove();
     }, 1500);
-}
 
-    const temporizador = setInterval(() => {
+}, 800);
+
+// ⏱️ TEMPORIZADOR
+const temporizador = setInterval(() => {
     tiempo--;
     document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
 
     if (tiempo <= 0) {
-        clearInterval(temporizador);
         juegoActivo = false;
+        clearInterval(temporizador);
+        clearInterval(generador);
+
         alert("⏰ Fin del juego. Puntos: " + puntos);
     }
 }, 1000);
-
-setInterval(crearObjeto, 1000);
 </script>
 
 </body>
