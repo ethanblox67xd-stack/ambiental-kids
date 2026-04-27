@@ -51,6 +51,8 @@ h1 {
 
 <script>
 let puntos = 0;
+l1e1t tiempo = 30;       
+let juegoActivo = true;
 
 const objetos = [
     { emoji: "🧴", tipo: "reciclable" },
@@ -58,6 +60,9 @@ const objetos = [
     { emoji: "🍌", tipo: "basura" },
     { emoji: "🍎", tipo: "basura" }
 ];
+
+function crearObjeto() {
+    if (!juegoActivo) return;
 
 function crearObjeto() {
     const area = document.getElementById("area");
@@ -71,6 +76,8 @@ function crearObjeto() {
     div.style.top = Math.random() * 250 + "px";
 
     div.onclick = function() {
+        if (!juegoActivo) return;
+        
         if (obj.tipo === "reciclable") {
             puntos++;
         } else {
@@ -86,6 +93,17 @@ function crearObjeto() {
         if (area.contains(div)) div.remove();
     }, 1500);
 }
+
+    const temporizador = setInterval(() => {
+    tiempo--;
+    document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
+
+    if (tiempo <= 0) {
+        clearInterval(temporizador);
+        juegoActivo = false;
+        alert("⏰ Fin del juego. Puntos: " + puntos);
+    }
+}, 1000);
 
 setInterval(crearObjeto, 1000);
 </script>
