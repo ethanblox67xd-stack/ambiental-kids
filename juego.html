@@ -86,7 +86,18 @@ const objetos = [
     { nombre: "Tarros de leche", tipo: "metal" },
     { nombre: "Caja de cartón", tipo: "papel" }
 ];
+<script>
+let tiempo = 30;
 
+const temporizador = setInterval(() => {
+    tiempo--;
+    document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
+
+    if (tiempo <= 0) {
+        clearInterval(temporizador);
+        alert("⏰ ¡Se acabó el tiempo!");
+    }
+}, 1000);
 let actual;
 
 function nuevoObjeto() {
