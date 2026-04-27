@@ -4,124 +4,20 @@
 <meta charset="UTF-8">
 <title>Juego Ambiental Kids</title>
 
-<style>
-    body {
-        font-family: Arial;
-        text-align: center;
-        background: #e0f7fa;
-    }
-
-    h1 {
-        color: #2e7d32;
-    }
-
-    .contenedores {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px;
-    }
-
-    .contenedor {
-        width: 120px;
-        height: 120px;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        line-height: 120px;
-    }
-
-    .plastico { background: #2196f3; }
-    .papel { background: #ff9800; }
-    .organico { background: #4caf50; }
-    .metal { background: #858485; }
-    .vidrio { background: #ff3A3A; }
-    
-    .objeto {
-        margin: 20px;
-        font-size: 20px;
-        cursor: pointer;
-        background: white;
-        display: inline-block;
-        padding: 10px;
-        border-radius: 10px;
-    }
-
-    #resultado {
-        font-size: 20px;
-        margin-top: 20px;
-    }
-</style>
-</head>
-
-<body>
-
-<h1>♻️ Clasifica el reciclaje</h1>
-<p>Haz clic en el contenedor correcto</p>
-<p id="tiempo">Tiempo: 30</p>
-<p id="puntos">Puntos: 0</p>
-<p id="fin"></p>
-
-<button onclick="reiniciarJuego()" id="reiniciar" style="display:none;">
-🔄 Jugar otra vez
-</button>
-<div id="objeto" class="objeto"></div>
-
-<div class="contenedores">
-    <div class="contenedor plastico" onclick="verificar('plastico')">Plástico</div>
-    <div class="contenedor papel" onclick="verificar('papel')">Papel</div>
-    <div class="contenedor organico" onclick="verificar('organico')">Orgánico</div>
-    <div class="contenedor vidrio" onclick="verificar('vidrio')">Vidrio</div>
-    <div class="contenedor metal" onclick="verificar('metal')">Metal</div>
-</div>
-
-<p id="resultado"></p>
-<a href="index.html">⬅️ Volver</a>
 <script>
-const objetos = [
-    { nombre: "Botella", tipo: "plastico" },
-    { nombre: "Periódico", tipo: "papel" },
-    { nombre: "Cáscara de plátano", tipo: "organico" },
-    { nombre: "Bolsa", tipo: "plastico" },
-    { nombre: "Botella de vino", tipo: "vidrio" },
-    { nombre: "Cubeta de huevos", tipo: "papel" },
-    { nombre: "Cáscara de papa", tipo: "organico" },
-    { nombre: "Vaso de vidrio", tipo: "vidrio" },
-    { nombre: "Llaves", tipo: "metal" },
-    { nombre: "Clavos", tipo: "metal" },
-    { nombre: "Tarros de leche", tipo: "metal" },
-    { nombre: "Caja de cartón", tipo: "papel" }
-];
 let tiempo = 30;
 let puntos = 0;
 let juegoActivo = true;
-const temporizador = setInterval(() => {
-    tiempo--;
-    document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
 
-    if (tiempo <= 0) {
-        clearInterval(temporizador);
-        alert("⏰ ¡Se acabó el tiempo!");
-    }
-}, 1000);
+const objetos = [
+    { nombre: "Botella", tipo: "plastico" },
+    { nombre: "Periódico", tipo: "papel" },
+    { nombre: "Cáscara de plátano", tipo: "organico" }
+];
+
 let actual;
 
 function nuevoObjeto() {
-    if (!juegoActivo) return;
-    
-    actual = objetos[Math.floor(Math.random() * objetos.length)];
-    document.getElementById("objeto").innerText = actual.nombre;
-}
-
-function verificar(tipo) {
-    if (!juegoActivo) return;
-    
-    if (tipo === actual.tipo) {
-        document.getElementById("resultado").innerText = "✅ ¡Correcto!";
-    } else {
-        document.getElementById("resultado").innerText = "❌ Intenta otra vez";
-    }
-    function nuevoObjeto() {
     if (!juegoActivo) return;
 
     actual = objetos[Math.floor(Math.random() * objetos.length)];
@@ -136,26 +32,27 @@ function verificar(tipo) {
     } else {
         puntos--;
     }
-        document.getElementById("puntos").innerText = "Puntos: " + puntos;
+
+    document.getElementById("puntos").innerText = "Puntos: " + puntos;
     nuevoObjeto();
-    // ⏱️ TEMPORIZADOR
+}
+
+// ⏱️ TEMPORIZADOR
 const temporizador = setInterval(() => {
     tiempo--;
     document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
-       
+
     if (tiempo <= 0) {
         clearInterval(temporizador);
         juegoActivo = false;
 
         document.getElementById("fin").innerText =
             "⏰ Fin del juego. Puntaje: " + puntos;
-    
-    setTimeout(nuevoObjeto, 1000);
-    
-         document.getElementById("reiniciar").style.display = "inline-block";
+
+        document.getElementById("reiniciar").style.display = "inline-block";
     }
 }, 1000);
-    
+
 function reiniciarJuego() {
     location.reload();
 }
