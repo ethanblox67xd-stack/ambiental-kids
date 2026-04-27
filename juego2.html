@@ -62,56 +62,59 @@ const objetos = [
     { emoji: "🍎", tipo: "basura" }
 ];
 
-const area = document.getElementById("area");
+window.onload = function() {
 
-// 🎮 Crear objetos constantemente
-const generador = setInterval(() => {
-    if (!juegoActivo) return;
+    const area = document.getElementById("area");
 
-    const obj = objetos[Math.floor(Math.random() * objetos.length)];
-
-    const div = document.createElement("div");
-    div.className = "objeto";
-    div.innerText = obj.emoji;
-
-    div.style.left = Math.random() * 260 + "px";
-    div.style.top = Math.random() * 260 + "px";
-
-    div.onclick = function() {
+    // 🎮 GENERAR OBJETOS
+    const generador = setInterval(() => {
         if (!juegoActivo) return;
 
-        if (obj.tipo === "reciclable") {
-            puntos++;
-        } else {
-            puntos--;
+        const obj = objetos[Math.floor(Math.random() * objetos.length)];
+
+        const div = document.createElement("div");
+        div.className = "objeto";
+        div.innerText = obj.emoji;
+
+        div.style.left = Math.random() * 260 + "px";
+        div.style.top = Math.random() * 260 + "px";
+
+        div.onclick = function() {
+            if (!juegoActivo) return;
+
+            if (obj.tipo === "reciclable") {
+                puntos++;
+            } else {
+                puntos--;
+            }
+
+            document.getElementById("puntos").innerText = "Puntos: " + puntos;
+            div.remove();
+        };
+
+        area.appendChild(div);
+
+        setTimeout(() => {
+            if (area.contains(div)) div.remove();
+        }, 1500);
+
+    }, 800);
+
+    // ⏱️ TEMPORIZADOR
+    const temporizador = setInterval(() => {
+        tiempo--;
+        document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
+
+        if (tiempo <= 0) {
+            juegoActivo = false;
+            clearInterval(temporizador);
+            clearInterval(generador);
+
+            alert("⏰ Fin del juego. Puntos: " + puntos);
         }
+    }, 1000);
 
-        document.getElementById("puntos").innerText = "Puntos: " + puntos;
-        div.remove();
-    };
-
-    area.appendChild(div);
-
-    // desaparece solo
-    setTimeout(() => {
-        if (area.contains(div)) div.remove();
-    }, 1500);
-
-}, 800);
-
-// ⏱️ TEMPORIZADOR
-const temporizador = setInterval(() => {
-    tiempo--;
-    document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
-
-    if (tiempo <= 0) {
-        juegoActivo = false;
-        clearInterval(temporizador);
-        clearInterval(generador);
-
-        alert("⏰ Fin del juego. Puntos: " + puntos);
-    }
-}, 1000);
+};
 </script>
 
 </body>
