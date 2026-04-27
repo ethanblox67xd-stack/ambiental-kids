@@ -56,7 +56,15 @@
 
 <h1>♻️ Clasifica el reciclaje</h1>
 <p>Haz clic en el contenedor correcto</p>
+<a href="index.html">⬅️ Volver</a>
+    <p id="tiempo">Tiempo: 30</p>
+<p id="puntos">Puntos: 0</p>
+<p id="fin"></p>
 
+<button onclick="reiniciarJuego()" id="reiniciar" style="display:none;">
+🔄 Jugar otra vez
+</button>
+    
 <div id="objeto" class="objeto"></div>
 
 <div class="contenedores">
@@ -68,28 +76,56 @@
 <p id="resultado"></p>
 
 <script>
+let tiempo = 30;
+let puntos = 0;
+let juegoActivo = true;
+
 const objetos = [
     { nombre: "Botella", tipo: "plastico" },
     { nombre: "Periódico", tipo: "papel" },
-    { nombre: "Cáscara de plátano", tipo: "organico" },
-    { nombre: "Bolsa", tipo: "plastico" },
-    { nombre: "Caja de cartón", tipo: "papel" }
+    { nombre: "Cáscara de plátano", tipo: "organico" }
 ];
 
 let actual;
 
 function nuevoObjeto() {
+    if (!juegoActivo) return;
+
     actual = objetos[Math.floor(Math.random() * objetos.length)];
     document.getElementById("objeto").innerText = actual.nombre;
 }
 
 function verificar(tipo) {
+    if (!juegoActivo) return;
+
     if (tipo === actual.tipo) {
-        document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+        puntos++;
     } else {
-        document.getElementById("resultado").innerText = "❌ Intenta otra vez";
+        puntos--;
     }
-    setTimeout(nuevoObjeto, 1000);
+
+    document.getElementById("puntos").innerText = "Puntos: " + puntos;
+    nuevoObjeto();
+}
+
+// ⏱️ TEMPORIZADOR
+const temporizador = setInterval(() => {
+    tiempo--;
+    document.getElementById("tiempo").innerText = "Tiempo: " + tiempo;
+
+    if (tiempo <= 0) {
+        clearInterval(temporizador);
+        juegoActivo = false;
+
+        document.getElementById("fin").innerText =
+            "⏰ Fin del juego. Puntaje: " + puntos;
+
+        document.getElementById("reiniciar").style.display = "inline-block";
+    }
+}, 1000);
+
+function reiniciarJuego() {
+    location.reload();
 }
 
 nuevoObjeto();
