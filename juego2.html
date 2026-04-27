@@ -49,6 +49,11 @@ h1 {
 
 <a href="index.html">⬅️ Volver</a>
 
+    <br><br>
+<button id="reiniciar" onclick="reiniciarJuego()" style="display:none;">
+🔄 Volver a jugar
+</button>
+
 <script>
 let puntos = 0;
 let tiempo = 60;
@@ -129,7 +134,12 @@ const temporizador = setInterval(() => {
         clearInterval(generador);
 
         alert("⏰ Fin del juego. Puntos: " + puntos);
+        
+        document.getElementById("reiniciar").style.display = "inline-block";
     }
+    function reiniciarJuego() {
+    location.reload();
+}
 }, 1000);
 </script>
 
