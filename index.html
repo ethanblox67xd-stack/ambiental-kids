@@ -142,52 +142,45 @@ iframe {
 
 <footer>
     <p>© 2026 Ambiental Kids - Pequeñas acciones, grandes cambios</p>
+</footer>
 
-   <section id="juegos">
-
+<section id="juegos">
     <h2>🎮 Juegos</h2>
     <a href="juego.html" class="boton-juego">🎮 Clasifícalo</a>
-  <a href="juego2.html" class="boton-juego">🎮 Atrápalo</a>
+    <a href="juego2.html" class="boton-juego">🎮 Atrápalo</a>
+</section>
 
-  </section>
-  
 <section id="experimentos">
     <h2>🧪 Experimentos y Videos</h2>
-
     <p>Aprende con videos divertidos:</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sJB-BtqDyek?si=5jcV5bSiOfo_RbEr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="300" height="200"
-src="https://www.youtube.com/embed/sJB-BtqDyek?si=xRz_O2RJB4bleNlo"
-frameborder="0"
-allowfullscreen>
-</iframe>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/sJB-BtqDyek" allowfullscreen></iframe>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/1c2b0K9b3Vw" allowfullscreen></iframe>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/Zv0y5Y8g6KQ" allowfullscreen></iframe>
 </section>
 
-    <iframe width="300" height="200" src="https://www.youtube.com/embed/1c2b0K9b3Vw" 
-    title="Experimento agua" frameborder="0" allowfullscreen></iframe>
+<section id="consejos">
+    <h2>💡 Consejos</h2>
 
-    <iframe width="300" height="200" src="https://www.youtube.com/embed/Zv0y5Y8g6KQ" 
-    title="Experimento energía" frameborder="0" allowfullscreen></iframe>
+    <div class="card" onclick="mostrarConsejo('agua')">
+        <h3>💧 Ahorra agua</h3>
+        <p>Haz clic para ver consejo</p>
+    </div>
+
+    <div class="card" onclick="mostrarConsejo('reciclaje')">
+        <h3>♻️ Recicla</h3>
+        <p>Haz clic para ver consejo</p>
+    </div>
+
+    <div class="card" onclick="mostrarConsejo('naturaleza')">
+        <h3>🌱 Cuida las plantas</h3>
+        <p>Haz clic para ver consejo</p>
+    </div>
+
+    <p id="mensaje"></p>
 </section>
-</footer>
-<div class="card" onclick="mostrarConsejo('agua')">
-    <h3>💧 Ahorra agua</h3>
-    <p>Haz clic para ver consejo</p>
-</div>
 
-<div class="card" onclick="mostrarConsejo('reciclaje')">
-    <h3>♻️ Recicla</h3>
-    <p>Haz clic para ver consejo</p>
-</div>
-
-<div class="card" onclick="mostrarConsejo('naturaleza')">
-    <h3>🌱 Cuida las plantas</h3>
-    <p>Haz clic para ver consejo</p>
-</div>
-  <p id="mensaje"></p>
-</section>
-  <script>
+<script>
 function mostrarConsejo(tipo) {
     let consejos = {
         agua: [
@@ -211,23 +204,6 @@ function mostrarConsejo(tipo) {
     let aleatorio = lista[Math.floor(Math.random() * lista.length)];
 
     document.getElementById("mensaje").innerText = aleatorio;
-}
-</script>
-  <script>
-function mostrarConsejo(tipo) {
-    let mensaje = "";
-
-    if (tipo === "agua") {
-        mensaje = "💧 Cierra el grifo mientras te cepillas.";
-    } 
-    else if (tipo === "reciclaje") {
-        mensaje = "♻️ Separa plástico y papel.";
-    } 
-    else if (tipo === "naturaleza") {
-        mensaje = "🌱 Cuida y riega tus plantas.";
-    }
-
-    document.getElementById("mensaje").innerText = mensaje;
 }
 </script>
 </body>
