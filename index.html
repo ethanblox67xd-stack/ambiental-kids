@@ -213,5 +213,22 @@ function mostrarConsejo(tipo) {
     document.getElementById("mensaje").innerText = aleatorio;
 }
 </script>
+  <script>
+function mostrarConsejo(tipo) {
+    let mensaje = "";
+
+    if (tipo === "agua") {
+        mensaje = "💧 Cierra el grifo mientras te cepillas.";
+    } 
+    else if (tipo === "reciclaje") {
+        mensaje = "♻️ Separa plástico y papel.";
+    } 
+    else if (tipo === "naturaleza") {
+        mensaje = "🌱 Cuida y riega tus plantas.";
+    }
+
+    document.getElementById("mensaje").innerText = mensaje;
+}
+</script>
 </body>
 </html>
