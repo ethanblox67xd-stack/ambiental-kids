@@ -171,23 +171,46 @@ allowfullscreen>
     title="Experimento energía" frameborder="0" allowfullscreen></iframe>
 </section>
 </footer>
-<section id="consejos">
-    <h2>💡 Consejos</h2>
+<div class="card" onclick="mostrarConsejo('agua')">
+    <h3>💧 Ahorra agua</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
 
-    <div class="card">
-        <h3>💧 Ahorra agua</h3>
-        <p>Cierra el grifo cuando no lo uses.</p>
-    </div>
+<div class="card" onclick="mostrarConsejo('reciclaje')">
+    <h3>♻️ Recicla</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
 
-    <div class="card">
-        <h3>♻️ Recicla</h3>
-        <p>Separa la basura en diferentes contenedores.</p>
-    </div>
-
-    <div class="card">
-        <h3>🌱 Cuida las plantas</h3>
-        <p>Riega y protege las plantas de tu entorno.</p>
-    </div>
+<div class="card" onclick="mostrarConsejo('naturaleza')">
+    <h3>🌱 Cuida las plantas</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
 </section>
+  <script>
+function mostrarConsejo(tipo) {
+    let consejos = {
+        agua: [
+            "💧 Cierra el grifo mientras te cepillas.",
+            "🚿 Dúchate rápido.",
+            "🪣 Usa balde en vez de manguera."
+        ],
+        reciclaje: [
+            "♻️ Separa plástico y papel.",
+            "📦 Reutiliza cajas.",
+            "🛍️ Usa bolsas reutilizables."
+        ],
+        naturaleza: [
+            "🌱 Riega las plantas.",
+            "🌳 Planta árboles.",
+            "🐦 No tires basura."
+        ]
+    };
+
+    let lista = consejos[tipo];
+    let aleatorio = lista[Math.floor(Math.random() * lista.length)];
+
+    document.getElementById("mensaje").innerText = aleatorio;
+}
+</script>
 </body>
 </html>
