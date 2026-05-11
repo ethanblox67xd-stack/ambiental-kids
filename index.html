@@ -101,10 +101,9 @@ iframe {
 
 #mensaje {
     margin-top: 20px;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     color: #1b5e20;
-    transition: 0.3s;
 }
       
     </style>
@@ -168,29 +167,31 @@ iframe {
 </section>
 
 <section id="consejos">
-    <h2>💡 Consejos</h2>
 
-    <div class="card" onclick="mostrarConsejo('agua')">
-        <h3>💧 Ahorra agua</h3>
-        <p>Haz clic para ver consejo</p>
-    </div>
+<h2>💡 Consejos</h2>
 
-    <div class="card" onclick="mostrarConsejo('reciclaje')">
-        <h3>♻️ Recicla</h3>
-        <p>Haz clic para ver consejo</p>
-    </div>
+<div class="card" onclick="mostrarConsejo('agua')">
+    <h3>💧 Ahorra agua</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
 
-    <div class="card" onclick="mostrarConsejo('naturaleza')">
-        <h3>🌱 Cuida las plantas</h3>
-        <p>Haz clic para ver consejo</p>
-    </div>
+<div class="card" onclick="mostrarConsejo('reciclaje')">
+    <h3>♻️ Recicla</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
 
-  <div class="card" onclick="mostrarConsejo('energia')">
+<div class="card" onclick="mostrarConsejo('naturaleza')">
+    <h3>🌱 Cuida las plantas</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
+
+<div class="card" onclick="mostrarConsejo('energia')">
     <h3>⚡ Ahorra energía</h3>
     <p>Haz clic para ver consejo</p>
 </div>
 
-    <p id="mensaje"></p>
+<p id="mensaje"></p>
+
 </section>
 
 <script>
@@ -201,71 +202,35 @@ function mostrarConsejo(tipo) {
         agua: [
             "💧 Cierra el grifo mientras te cepillas.",
             "🚿 Dúchate rápido.",
-            "🪣 Usa balde en vez de manguera.",
-            "🚰 Usa un vaso al cepillarte."
-            "💦 No juegues desperdiciando agua.",
-            "🚰 Toma solo el agua que necesites.",
-            "🪥 Usa un vaso para cepillarte.",
-            "🌧️ Guarda agua de lluvia para las plantas.",
-            "🚿 Cierra la ducha mientras te enjabonas.",
-            "💧 Cada gota cuenta.
+            "🪣 Usa balde en vez de manguera."
         ],
 
         reciclaje: [
             "♻️ Separa plástico y papel.",
             "📦 Reutiliza cajas.",
-            "🛍️ Usa bolsas reutilizables.",
-            "🧴 Reutiliza botellas."
-            "📦 Usa cajas viejas para guardar cosas.",
-            "🧴 Convierte botellas en macetas.",
-            "🛒 Lleva bolsas reutilizables.",
-            "📰 Recicla cuadernos usados.",
-            "🥫 Separa las latas del plástico.",
-            "♻️ Reciclar ayuda al planeta."
+            "🛍️ Usa bolsas reutilizables."
         ],
 
         naturaleza: [
             "🌱 Riega las plantas.",
             "🌳 Planta árboles.",
-            "🐦 No tires basura.",
-            "🦋 Cuida a los animales."
-            "🌳 Planta un árbol.",
-            "🌸 Cuida las flores.",
-            "🐦 No dañes a los animales.",
-            "🍃 Mantén limpio el parque.",
-            "🦋 Respeta a los insectos.",
-            "🌿 Ama la naturaleza."
+            "🐦 No tires basura."
         ],
 
         energia: [
             "⚡ Apaga luces innecesarias.",
             "🔌 Desconecta cargadores.",
-            "💡 Usa focos LED.",
-            "☀️ Aprovecha la luz solar."
-            "💡 Apaga luces innecesarias.",
-            "🔌 Desconecta cargadores.",
-            "☀️ Usa la luz del sol.",
-            "📺 Apaga la TV si no la ves.",
-            "🔋 Usa pilas recargables.",
-            "⚡ Ahorrar energía ayuda al planeta."
+            "💡 Usa focos LED."
         ]
     };
 
-    // 🎲 consejo aleatorio
     let lista = consejos[tipo];
-    let aleatorio = lista[Math.floor(Math.random() * lista.length)];
 
-    // 📍 mostrar mensaje
-    const mensaje = document.getElementById("mensaje");
+    let aleatorio =
+        lista[Math.floor(Math.random() * lista.length)];
 
-    mensaje.innerText = aleatorio;
-
-    // ✨ animación rápida
-    mensaje.style.opacity = "0";
-
-    setTimeout(() => {
-        mensaje.style.opacity = "1";
-    }, 100);
+    document.getElementById("mensaje").innerText =
+        aleatorio;
 }
 </script>
 </body>
