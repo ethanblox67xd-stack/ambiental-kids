@@ -177,27 +177,54 @@ iframe {
         <p>Haz clic para ver consejo</p>
     </div>
 
+  <div class="card" onclick="mostrarConsejo('energia')">
+    <h3>⚡ Ahorra energía</h3>
+    <p>Haz clic para ver consejo</p>
+</div>
+
     <p id="mensaje"></p>
 </section>
 
 <script>
 function mostrarConsejo(tipo) {
     let consejos = {
+
         agua: [
             "💧 Cierra el grifo mientras te cepillas.",
-            "🚿 Dúchate rápido.",
-            "🪣 Usa balde en vez de manguera."
+            "🚿 Dúchate en menos de 5 minutos.",
+            "🪣 Usa balde en vez de manguera.",
+            "🌧️ Recolecta agua de lluvia.",
+            "🥤 No desperdicies agua limpia.",
+            "🚰 Revisa si hay fugas en casa."
         ],
+
         reciclaje: [
             "♻️ Separa plástico y papel.",
             "📦 Reutiliza cajas.",
-            "🛍️ Usa bolsas reutilizables."
+            "🛍️ Usa bolsas reutilizables.",
+            "🥫 Lava las latas antes de reciclar.",
+            "📰 Recicla periódicos y revistas.",
+            "🧴 Reutiliza botellas de plástico."
         ],
+
         naturaleza: [
             "🌱 Riega las plantas.",
             "🌳 Planta árboles.",
-            "🐦 No tires basura."
+            "🐦 No tires basura.",
+            "🌸 Cuida las flores.",
+            "🐝 Protege a las abejas.",
+            "🌿 Respeta a los animales."
+        ],
+
+        energia: [
+            "⚡ Apaga las luces que no uses.",
+            "🔌 Desconecta cargadores.",
+            "💡 Usa focos LED.",
+            "🖥️ Apaga la computadora si no la usas.",
+            "🌞 Aprovecha la luz solar.",
+            "📺 No dejes la TV encendida."
         ]
+
     };
 
     let lista = consejos[tipo];
