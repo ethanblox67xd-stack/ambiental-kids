@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego Matemático</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:Arial;
+    background:#e8f5e9;
+}
+
+h1{
+    color:#2e7d32;
+}
+
+.caja{
+    background:white;
+    width:300px;
+    margin:auto;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    background:#4CAF50;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2e7d32;
+}
+
+#resultado{
+    font-size:25px;
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>➕ Juego Matemático</h1>
+
+<div class="caja">
+
+<h2 id="pregunta"></h2>
+
+<button onclick="respuesta(5)">5</button>
+<button onclick="respuesta(7)">7</button>
+<button onclick="respuesta(9)">9</button>
+
+<p id="resultado"></p>
+
+<br>
+
+<a href="index.html">
+<button>⬅️ Volver</button>
+</a>
+
+</div>
+
+<script>
+
+document.getElementById("pregunta").innerText =
+"¿Cuánto es 3 + 4?";
+
+function respuesta(numero){
+
+    if(numero == 7){
+        document.getElementById("resultado").innerText =
+        "🎉 ¡Correcto!";
+    }
+
+    else{
+        document.getElementById("resultado").innerText =
+        "❌ Incorrecto";
+    }
+}
+
+</script>
+
+</body>
+</html>
