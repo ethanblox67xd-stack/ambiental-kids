@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>Juego Matemático</title>
 
+let puntos = 0;
+let titulo = "🌱 Amigo de la Naturaleza";
+    
 <style>
 body{
     text-align:center;
@@ -53,6 +56,9 @@ button:hover{
 
 <div class="caja">
 
+<h3 id="puntos">⭐ Puntos: 0</h3>
+<h3 id="titulo">🏆 Título: 🌱 Amigo de la Naturaleza</h3>  
+
 <h2 id="pregunta"></h2>
 
 <input type="number" id="respuesta" placeholder="Escribe tu respuesta">
@@ -75,6 +81,34 @@ Responder
 
 <script>
 
+function actualizarTitulo() {
+
+    if (puntos >= 10000) {
+        titulo = "🌟 Maestro Ambiental";
+    }
+    else if (puntos >= 5000) {
+        titulo = "👑 Leyenda Ambiental";
+    }
+    else if (puntos >= 1000) {
+        titulo = "🌎 Experto del Planeta";
+    }
+    else if (puntos >= 500) {
+        titulo = "🌎 Héroe Ambiental";
+    }
+    else if (puntos >= 250) {
+        titulo = "🌳 Protector del Planeta";
+    }
+    else if (puntos >= 100) {
+        titulo = "💧 Guardián del Agua";
+    }
+    else if (puntos >= 50) {
+        titulo = "♻️ Reciclador Junior";
+    }
+
+    document.getElementById("titulo").innerText =
+        "🏆 Título: " + titulo;
+} 
+    
 const preguntas = [
 
 {
