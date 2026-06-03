@@ -55,9 +55,13 @@ button:hover{
 
 <h2 id="pregunta"></h2>
 
-<button onclick="respuesta(5)">5</button>
-<button onclick="respuesta(7)">7</button>
-<button onclick="respuesta(9)">9</button>
+<input type="number" id="respuesta" placeholder="Escribe tu respuesta">
+
+<br><br>
+
+<button onclick="respuesta()">
+Responder
+</button>
 
 <p id="resultado"></p>
 
@@ -71,23 +75,64 @@ button:hover{
 
 <script>
 
-document.getElementById("pregunta").innerText =
-"¿Cuánto es 3 + 4?";
+const preguntas = [
 
-function respuesta(numero){
+{
+pregunta: "♻️ Si un recolector recoge 50 botellas y cada una pesa 20 g, ¿cuántos gramos lleva?",
+respuesta: 1000
+},
 
-    if(numero == 7){
+{
+pregunta: "💧 Si una llave desperdicia 5 litros por hora durante 4 horas, ¿cuántos litros se desperdician?",
+respuesta: 20
+},
+
+{
+pregunta: "🌳 Si cada árbol ayuda a 2 personas y hay 15 árboles, ¿a cuántas personas ayuda?",
+respuesta: 30
+},
+
+{
+pregunta: "♻️ Si reciclas 8 botellas al día durante 7 días, ¿cuántas reciclas?",
+respuesta: 56
+}
+
+];
+
+let preguntaActual;
+
+function nuevaPregunta() {
+
+    preguntaActual =
+    preguntas[Math.floor(Math.random() * preguntas.length)];
+
+    document.getElementById("pregunta").innerText =
+    preguntaActual.pregunta;
+
+    document.getElementById("resultado").innerText = "";
+}
+
+function respuesta() {
+
+    let valor =
+    parseInt(document.getElementById("respuesta").value);
+
+    if(valor === preguntaActual.respuesta){
+
         document.getElementById("resultado").innerText =
         "🎉 ¡Correcto!";
-    }
 
-    else{
+        setTimeout(nuevaPregunta, 1000);
+
+    } else {
+
         document.getElementById("resultado").innerText =
-        "❌ Incorrecto";
+        "❌ Intenta otra vez";
     }
 }
 
-</script>
+nuevaPregunta();
 
+</script>
 </body>
 </html>
