@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>Juego Matemático</title>
 
-let puntos = 0;
-let titulo = "🌱 Amigo de la Naturaleza";
     
 <style>
 body{
@@ -81,6 +79,9 @@ Responder
 
 <script>
 
+let puntos = 0;
+let titulo = "🌱 Amigo de la Naturaleza";
+    
 function actualizarTitulo() {
 
     if (puntos >= 10000) {
@@ -231,17 +232,28 @@ function respuesta() {
     let valor =
     parseInt(document.getElementById("respuesta").value);
 
-    if(valor === preguntaActual.respuesta){
+if(valor === preguntaActual.respuesta){
 
-        document.getElementById("resultado").innerText =
-        "🎉 ¡Correcto!";
+    puntos += 10;
 
-        setTimeout(nuevaPregunta, 1000);
+    document.getElementById("puntos").innerText =
+    "⭐ Puntos: " + puntos;
 
-    } else {
+    actualizarTitulo();
 
-        document.getElementById("resultado").innerText =
-        "❌ Intenta otra vez";
+    document.getElementById("resultado").innerText =
+    "🎉 ¡Correcto!";
+
+    document.getElementById("respuesta").value = "";
+
+    setTimeout(nuevaPregunta, 1000);
+
+} else {
+
+document.getElementById("resultado").innerText =
+"❌ Intenta otra vez";
+
+document.getElementById("respuesta").value = "";
     }
 }
 
