@@ -75,12 +75,16 @@ Responder
 <button>⬅️ Volver</button>
 </a>
 
+<button onclick="reiniciarProgreso()">
+🗑️ Reiniciar progreso
+</button>
+    
 </div>
 
 <script>
 
-let puntos = 0;
-let titulo = "🌱 Amigo de la Naturaleza";
+let puntos = parseInt(localStorage.getItem("puntos")) || 0;
+let titulo = localStorage.getItem("titulo") || "🌱 Amigo de la Naturaleza";
     
 function actualizarTitulo() {
 
@@ -108,6 +112,8 @@ function actualizarTitulo() {
 
     document.getElementById("titulo").innerText =
         "🏆 Título: " + titulo;
+    localStorage.setItem("puntos", puntos);
+localStorage.setItem("titulo", titulo);
 } 
     
 const preguntas = [
@@ -257,8 +263,31 @@ document.getElementById("respuesta").value = "";
     }
 }
 
+document.getElementById("puntos").innerText =
+"⭐ Puntos: " + puntos;
+
+actualizarTitulo();
+    
 nuevaPregunta();
 
+function reiniciarProgreso(){
+
+    if(confirm("¿Seguro que deseas borrar todo tu progreso?")){
+
+        localStorage.removeItem("puntos");
+        localStorage.removeItem("titulo");
+
+        puntos = 0;
+        titulo = "🌱 Amigo de la Naturaleza";
+
+        document.getElementById("puntos").innerText =
+        "⭐ Puntos: 0";
+
+        document.getElementById("titulo").innerText =
+        "🏆 Título: 🌱 Amigo de la Naturaleza";
+    }
+}
+    
 </script>
 </body>
 </html>
