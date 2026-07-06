@@ -54,11 +54,8 @@ button:hover{
 
 <div class="caja">
 
-document.getElementById("puntos").innerText =
-"⭐ Puntos: " + jugador.puntos;
-
-document.getElementById("titulo").innerText =
-"🏆 Título: " + jugador.titulo;
+<h3 id="puntos">⭐ Puntos: 0</h3>
+<h3 id="titulo">🏆 Título: 🌱 Amigo de la Naturaleza</h3>
     
 <h2 id="pregunta"></h2>
 
@@ -194,6 +191,8 @@ respuesta: 354
 
 let preguntaActual;
 
+let respuestasCorrectas = 0;
+    
 function nuevaPregunta() {
 
     preguntaActual =
@@ -212,12 +211,24 @@ function respuesta() {
 
 if(valor === preguntaActual.respuesta){
 
-    sumarPuntos(10);
+sumarPuntos(10);
+
+respuestasCorrectas++;
+
+if (respuestasCorrectas >= 10) {
+
+    completarJuego();
+
+    alert("🏆 ¡Has completado el juego matemático!");
+
+    respuestasCorrectas = 0;
+}
     
 document.getElementById("puntos").innerText =
 "⭐ Puntos: " + jugador.puntos;
 
-    actualizarTitulo();
+document.getElementById("titulo").innerText =
+"🏆 Título: " + jugador.titulo;
 
     document.getElementById("resultado").innerText =
     "🎉 ¡Correcto!";
@@ -236,9 +247,10 @@ document.getElementById("respuesta").value = "";
 }
 
 document.getElementById("puntos").innerText =
-"⭐ Puntos: " + puntos;
+"⭐ Puntos: " + jugador.puntos;
 
-actualizarTitulo();
+document.getElementById("titulo").innerText =
+"🏆 Título: " + jugador.titulo;
     
 nuevaPregunta();
 
@@ -246,16 +258,9 @@ function reiniciarProgreso(){
 
     if(confirm("¿Seguro que deseas borrar todo tu progreso?")){
 
-localStorage.removeItem("jugador");
+        localStorage.removeItem("jugador");
 
-        puntos = 0;
-        titulo = "🌱 Amigo de la Naturaleza";
-
-        document.getElementById("puntos").innerText =
-        "⭐ Puntos: 0";
-
-        document.getElementById("titulo").innerText =
-        "🏆 Título: 🌱 Amigo de la Naturaleza";
+        location.reload();
     }
 }
     
