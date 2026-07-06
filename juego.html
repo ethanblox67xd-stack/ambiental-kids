@@ -79,6 +79,8 @@
     
 <p id="resultado"></p>
 
+<script src="jugador.js"></script>
+    
 <script>
 let tiempo = 30;
 let puntos = 0;
@@ -111,12 +113,16 @@ function nuevoObjeto() {
 function verificar(tipo) {
     if (!juegoActivo) return;
 
-    if (tipo === actual.tipo) {
-        puntos++;
-    } else {
-        puntos--;
-    }
+if (tipo === actual.tipo) {
 
+    puntos++;
+
+    sumarPuntos(10);
+
+} else {
+
+    puntos--;
+}
     document.getElementById("puntos").innerText = "Puntos: " + puntos;
     nuevoObjeto();
 }
@@ -130,6 +136,8 @@ const temporizador = setInterval(() => {
         clearInterval(temporizador);
         juegoActivo = false;
 
+        completarJuego();
+        
         document.getElementById("fin").innerText =
             "⏰ Fin del juego. Puntaje: " + puntos;
 
