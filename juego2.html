@@ -54,6 +54,8 @@ h1 {
 🔄 Volver a jugar
 </button>
 
+<script src="jugador.js"></script>
+    
 <script>
 function reiniciarJuego() {
     location.reload();
@@ -109,11 +111,17 @@ const generador = setInterval(() => {
     div.onclick = function() {
         if (!juegoActivo) return;
 
-        if (obj.tipo === "reciclable") {
-            puntos++;
-        } else {
-            puntos--;
-        }
+if (obj.tipo === "reciclable") {
+
+    puntos++;
+
+    sumarPuntos(10);
+
+} else {
+
+    puntos--;
+
+}
 
         puntosTexto.innerText = "Puntos: " + puntos;
         div.remove();
@@ -137,13 +145,13 @@ const temporizador = setInterval(() => {
         clearInterval(temporizador);
         clearInterval(generador);
 
+        completarJuego();
+        
         alert("⏰ Fin del juego. Puntos: " + puntos);
         
         document.getElementById("reiniciar").style.display = "inline-block";
     }
-    function reiniciarJuego() {
-    location.reload();
-}
+
 }, 1000);
 </script>
 
